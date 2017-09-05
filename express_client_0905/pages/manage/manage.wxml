@@ -1,0 +1,8 @@
+
+<view class="apple" >
+  <!-- ToolTip信息提示 -->
+  <button style="color:#fff;background-color:rgba(23,181,238,1)" type="primary" bindtap="checkTap">审核</button>
+  <button type="primary" class="info" bindtap="advertiseTap">发布公告</button>
+  <button type="default" class="warn" bindtap="modifyTap">修改公告</button>
+  <button type="default" class="warn" bindtap="messageTap">公告栏</button>
+</view>
