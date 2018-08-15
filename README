@@ -1,0 +1,29 @@
+１、安装好docker
+
+２、docker pull tomcat
+    docker pull mysql
+
+３、docker run -it -p 8080:8080 --rm tomcat:7.0     
+　　#-i：表示以“交互模式”运行容器 
+　　＃-t：表示容器启动后会进入其命令行 
+　　＃-p端口映射  　
+　　＃－ｒｍ可以在容器启动时设置--rm选项，这样在容器退出时就能够自动清理容器内部的文件系统　（测试的时候最好不要加）　　 
+　　＃tomcat:7.0 　 tomcat的名称
+
+４、docker cp ./exam.war kind_wescoff:/usr/local/tomcat/webapps/
+　　＃首先进入到./exam.war所在的目录下
+　　＃kind_wescoff　tomcat这个容器的名称
+　　＃整个命令行的作用：将本地的项目复制到tomcat容器webapps目录下
+　　＃exam.war　下载地址：https://pan.baidu.com/s/1boGczoV　　（数据库地址，表名需要修改）
+
+５、docker run --name duan-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+　　＃--name 指定容器的名称
+　　＃duan-mysql　　容器的名称
+　　＃-p　端口映射
+　　＃-e MYSQL_ROOT_PASSWORD=123456　　　－ｅ　指定环境变量，容器中可以使用该环境变量 
+　　＃mysql:5.7　　mysql镜像名称　　　　
+
+６、验证：http://localhost:8080/exam
+
+７、说明：
+　　本实验是使用了tomcat+mysql+javaweb+docker结合，tomcat、mysql都对外暴露了接口，这样子两个容器就相当虚拟机了，所以在数据库连接中直接使用ip地址了。
